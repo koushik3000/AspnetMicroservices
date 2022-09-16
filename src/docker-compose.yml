@@ -16,6 +16,8 @@ services:
   portainer:
     image: portainer/portainer-ce 
 
+  
+
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
     build:
@@ -33,8 +35,15 @@ services:
       context: .
       dockerfile: Services/Discount/Discount.API/Dockerfile
 
+  discount.grpc:
+    image: ${DOCKER_REGISTRY-}discountgrpc
+    build:
+      context: .
+      dockerfile: Services/Discount/Discount.Grpc/Dockerfile
+
 volumes:
   mongo_data:
   portainer_data:
   postgres_data:
   pgadmin_data:
+
